@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HotelListing.IRepository
 {
-    interface IUnitOfWork :IDisposable
-    {
-        public IGenericRepository<Country> Countries { get; }
-        public IGenericRepository<Hotel> Hotels { get; }
-        Task save();
+    public interface IUnitOfWork : IDisposable
+    {   
+        IGenericRepository<Country> Countries { get; }
+        IGenericRepository<Hotel> Hotels { get; }
+        Task Save();
     }
 }

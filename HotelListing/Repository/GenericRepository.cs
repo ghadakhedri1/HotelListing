@@ -33,16 +33,18 @@ namespace HotelListing.Repository
             _db.RemoveRange(entities);
         }
 
-        public async  Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
+        public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
         {
             IQueryable<T> query = _db;
             if (includes != null)
             {
-                foreach(var includeProperty in includes)
+                foreach (var includeProperty in includes)
                 {
                     query = query.Include(includeProperty);
                 }
+
             }
+
             return await query.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
